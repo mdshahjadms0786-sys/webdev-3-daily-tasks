@@ -18,6 +18,11 @@ app.get("/user", (req, res) => {
   res.json({ message: "This is the user page" });
 });
 
+app.get("/home", (req, res) => {
+  res.json({ message: "This is the home page" });
+});
+
+
 app.post("/user", (req, res) => {
   const { name, email } = req.body;
 
