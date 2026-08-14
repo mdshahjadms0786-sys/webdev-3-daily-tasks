@@ -4,16 +4,30 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Day-5");
+  res.json({
+    message: "Welcome to Day-5",
+    routes: ["GET /", "GET /health", "GET /user", "POST /user"],
+  });
+});
+
+app.get("/health", (req, res) => {
+  res.json({ status: "ok", day: 5 });
 });
 
 app.get("/user", (req, res) => {
-  res.send("This is the user page");
+  res.json({ message: "This is the user page" });
 });
 
 app.post("/user", (req, res) => {
   const { name, email } = req.body;
-  res.json({ message: `User ${name} added`, email });
+
+  if (!name || !email) {
+    return res.status(400).json({
+      error: "Name and email are required",
+    });
+  }
+
+  res.status(201).json({ message: `User ${name} added`, email });
 });
 
 app.listen(3000, () => {
