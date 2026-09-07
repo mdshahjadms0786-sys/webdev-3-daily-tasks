@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const morgan = require('morgan');
-
+const noteRoutes = require('./routes/noteRoutes');
 // use morgan middleware for logging
 app.use(morgan('dev'));
 
@@ -18,6 +18,8 @@ app.get('/', (req, res) => {
     console.log('Request Headers:', req.headers);
   res.send('Home Page');
 });
+
+app.use('/api', noteRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
