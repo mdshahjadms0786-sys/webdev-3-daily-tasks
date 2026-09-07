@@ -26,4 +26,12 @@ module.exports = {
     if (index !== -1) return tours.splice(index, 1)[0];
     return null;
   },
+  saveDateById(id, date) {
+    const tour = tours.find((t) => t.id === id);
+    if (tour) {
+      tour.date = date;
+      return tour;
+    }
+    return null;
+  },
 };

@@ -6,6 +6,7 @@ router.get("/", presenter.getAll);
 router.get("/:id", presenter.getOne);
 router.post("/", presenter.create);
 router.put("/:id", presenter.update);
+router.patch("/:id/date", presenter.saveDateById);
 router.delete("/:id", presenter.remove);
 
 module.exports = router;

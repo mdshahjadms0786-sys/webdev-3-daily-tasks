@@ -22,4 +22,9 @@ module.exports = {
     if (!tour) return res.status(404).json({ error: "Tour not found" });
     res.json(tour);
   },
+  saveDateById(req, res) {
+    const tour = tourModel.saveDateById(Number(req.params.id), req.body.date);
+    if (!tour) return res.status(404).json({ error: "Tour not found" });
+    res.json(tour);
+  },
 };
